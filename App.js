@@ -2,14 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/header/header';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-         <Header  />
-      </View>
-    );
+export default class App extends React.Component{
+  
+  render(){
+  return(
+  <Router>
+    <Stack key="root">
+
+    <Stack>
+  </Router>
+  )
   }
+  
 }
 
 const styles = StyleSheet.create({

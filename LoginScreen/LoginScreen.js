@@ -4,7 +4,7 @@ import { Container, Header, Title, Left, Icon, Right, Button, Body, Content,Text
 
 export default class LoginScreen extends React.Component{
 	state = {
-		username:"",
+		username:"npm ",
 		password:"",
 	}
 	render(){

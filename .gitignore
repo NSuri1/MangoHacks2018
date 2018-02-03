@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+.eslintrc.js
+.expo/
+package-lock.json
+

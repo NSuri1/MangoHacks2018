@@ -1,19 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import LoginScreen from './LoginScreen/LoginScreen'
+import { StyleSheet, View } from 'react-native';
+import { Container, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem } from "native-base";
+import { StackNavigator} from 'react-navigation';
 
-export default class App extends React.Component{
-  
-  render(){
-  return(
-  <Router>
-    <Stack key="root">
-
-    <Stack>
-  </Router>
-  );
-  }
-  
-}
+const App = StackNavigator({
+  Login: { screen: LoginScreen },
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -23,3 +16,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+export default App;

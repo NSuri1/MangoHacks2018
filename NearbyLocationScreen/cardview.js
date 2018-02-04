@@ -1,45 +1,96 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Body, View } from 'native-base';
+import Headers from '../Components/Headers'
+
 export default class CardHeaderFooterExample extends Component {
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      people: {
+        peopleList:[]
+      }
+    }
+  }
+
+  static navigationOptions = {
+    headerTitle: <Headers />
+  }
+
+  fetchPeopleList(){
+    return fetch(`https://mangoserver2018.herokuapp.com/activities/people?activityType=${this.props.navigation.state.params.activityType}`)
+    .then((response)=>response.json())
+    .then((responseJson)=>{
+      this.setState({
+          peopleList: responseJson.peopleList
+      });
+    })
+    .catch((error)=>{
+      console.error(error);
+    })
+
+  }
+  componentWillMount(){
+  }
+  componentDidMount(){
+    this.fetchPeopleList();
+  }
+
   render() {
     return (
       <Container>
-        <Header />
-        <Content>
+      <View>
+            <Text> My Profile </Text>
+          </View>
           <Card>
             <CardItem header>
-              <Text>Hi,</Text>
+              <Text>{this.props.navigation.state.params.user}</Text>
             </CardItem>
             <CardItem>
               <Body>
-                <Text>
-                  
-                  I want kill my self;
-                </Text>
+                <Text>Activity you searched for... {this.props.navigation.state.params.activityType}</Text>
+                
+                <Text>Your longitude: {this.props.navigation.state.params.latitude}</Text>
+                
+                <Text>Your latitude: {this.props.navigation.state.params.longitude}</Text>
               </Body>
             </CardItem>
             <CardItem footer>
-              <Text> shit</Text>
             </CardItem>
          </Card>
+        <Content>
+        {
+          console.log(this.state.people.peopleList)
+            /*this.state.people.peopleList.map((person, i)=>{
+                return(
+                <Card key={i}>
+                  <CardItem header>
+                    <Text> </Text>
+                  </CardItem>
+                  <CardItem>
+                    <Body>
+                      <Text>{console.log(person)}</Text>
+                    </Body>
+                  </CardItem>
+                </Card>
+              
 
-
-         <Card>
+          }) */  
+          
+          }
+          <Card>
             <CardItem header>
-              <Text>Hi again,</Text>
+              <Text>Header </Text>
             </CardItem>
             <CardItem>
               <Body>
-                <Text>
-                  
-                  I still want kill my self;
-                </Text>
+                <Text>Hey</Text>
               </Body>
             </CardItem>
             <CardItem footer>
-              <Text> fuck me</Text>
             </CardItem>
-         </Card>
+          </Card>
         </Content>
       </Container>
     );

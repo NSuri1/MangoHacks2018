@@ -32,8 +32,8 @@ class LoginScreen extends React.Component{
 			<Container>
 				<Content>
 					<Form>
-						<Item floatingLabel>
-							<Label> Username </Label>
+						<Item floatingLabel >
+							<Label > Username </Label>
 							<Input value={this.state.user} onChangeText={this.addUser}/>
 						</Item>
 						<Item floatingLabel>
@@ -50,3 +50,14 @@ class LoginScreen extends React.Component{
 	}
 }
 export default LoginScreen;
+
+const styles = StyleSheet.create({
+  bigblue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  red: {
+    color: 'red',
+  },
+});

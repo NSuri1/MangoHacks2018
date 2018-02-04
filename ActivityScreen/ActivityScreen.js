@@ -27,6 +27,17 @@ class ActivityScreen extends React.Component{
   			headerTitleStyle: styles.blackText,
 		}
 	};
+
+	createUser(){
+		return fetch(`https://mangoserver2018.herokuapp.com/activities/people?activityType=${this.state.activityType}&name=${this.props.navigation.state.params.user}&long=${this.state.longitude}&lat=${this.state.latitude}`, {
+			method:'POST'
+		})
+		.then((response)=>response.json())
+		.then((responseJson)=>{
+			console.log('Success');
+		})
+	}
+
 	fetchActivities()
 	{
 		return fetch('https://mangoserver2018.herokuapp.com/activities')
@@ -53,6 +64,7 @@ class ActivityScreen extends React.Component{
 			}, 
 			()=>{
 				this.props.navigation.navigate('card', {activityType:this.state.activityType, latitude: this.state.latitude, longitude: this.state.longitude, user:this.props.navigation.state.params.user});
+				this.createUser();
 			}
 			)
 		})

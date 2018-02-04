@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Body, View } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Body, View, Button } from 'native-base';
 import Headers from '../Components/Headers'
 import styles from '../styles';
 
@@ -63,7 +63,9 @@ export default class CardHeaderFooterExample extends Component {
         </Card>
         <Content>
         {
-          this.state.people.peopleList.map((person, i)=>{
+          this.state.people.peopleList
+          .filter((person) => this.props.navigation.state.params.user !== person.name)
+          .map((person, i)=>{
                 return(
                 <Card key={i}>
                   <CardItem header>
@@ -76,20 +78,15 @@ export default class CardHeaderFooterExample extends Component {
                       <Text>Longitude: {person.longitude}</Text>
                     </Body>
                   </CardItem>
+                  <CardItem footer>
+                    <Button full light onPress={()=>{this.props.navigation.navigate('Maps', {otherUserLatitude:person.latitude, otherUserLongitude:person.longitude, otherUserUsername:person.name, user:this.props.navigation.state.params.user, latitude:this.props.navigation.state.params.latitude, longitude:this.props.navigation.state.params.longitude })}}>
+                      <Text>Locate!</Text>
+                    </Button>
+                  </CardItem>
                 </Card>
           ) 
           })
         }
-          <Card>
-            <CardItem header>
-              <Text>Header </Text>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>Hey</Text>
-              </Body>
-            </CardItem>
-          </Card>
         </Content>
       </Container>
     );

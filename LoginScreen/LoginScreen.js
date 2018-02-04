@@ -17,7 +17,7 @@ class LoginScreen extends React.Component{
 		const params =	navigation || {};
 		return{
 
-			headerTitle: <Headers text="Mango2Mango"/>,
+			headerTitle: <Headers text="Connect Me"/>,
 			headerStyle: styles.mangoOrange,
   			headerTitleStyle: styles.blackText,
 		}
@@ -35,10 +35,6 @@ class LoginScreen extends React.Component{
 						<Item floatingLabel >
 							<Label > Username </Label>
 							<Input value={this.state.user} onChangeText={this.addUser}/>
-						</Item>
-						<Item floatingLabel>
-							<Label> Password </Label>
-							<Input />
 						</Item>
 					</Form>
 					<Button full Danger onPress={() => this.props.navigation.navigate('Activity', { user: this.state.user })} style={styles.mangoOrange}>

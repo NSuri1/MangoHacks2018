@@ -4,6 +4,10 @@ import { Container, Header, Title, Left, Icon, Right, Button, Body, Content,Text
 import styles from '../styles';
 
 class Headers extends React.Component{
+	constructor(props)
+	{
+		super(props);
+	}
 	render(){
 		return(
 			<View>

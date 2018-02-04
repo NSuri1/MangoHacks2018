@@ -1,11 +1,52 @@
 import React from "react";
 import { StyleSheet, View } from 'react-native';
-import { Container, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem } from "native-base";
+import Headers from '../Components/Headers'
+import { Container, Header, Title, Left, Right, Button, Body, Content,Text, Card, CardItem, Label, Form, Item, Input } from "native-base";
+import { Ionicons } from '@expo/vector-icons';
 
-export default class LoginScreen extends React.Component{
+class LoginScreen extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			user: "",
+		}
+	}
+	static navigationOptions = ({ navigation }) => {
+		const params =	navigation || {};
+		return{
+			headerTitle: <Headers />,
+			/*headerRight: (
+				<Button transparent onPress={()=>params.navigate('Activity')}>
+					<Ionicons name="ios-menu-outline" size={32} />
+				</Button>
+			),*/
+		}
+	};
+	addUser = (text) => {
+		this.setState({
+			user : text,
+		});
+	}
 	render(){
 		return(
-			<Text> Here </Text>
+			<Container>
+				<Content>
+					<Form>
+						<Item floatingLabel>
+							<Label> Username </Label>
+							<Input value={this.state.user} onChangeText={this.addUser}/>
+						</Item>
+						<Item floatingLabel>
+							<Label> Password </Label>
+							<Input />
+						</Item>
+					</Form>
+					<Button full Danger onPress={() => this.props.navigation.navigate('Activity', { user: this.state.user })}>
+						<Text> Submit </Text>
+					</Button>
+				</Content>
+			</Container>
 		);
 	}
 }
+export default LoginScreen;

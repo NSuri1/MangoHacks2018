@@ -15,11 +15,11 @@ class LoginScreen extends React.Component{
 		const params =	navigation || {};
 		return{
 			headerTitle: <Headers />,
-			/*headerRight: (
+			headerRight: (
 				<Button transparent onPress={()=>params.navigate('Activity')}>
 					<Ionicons name="ios-menu-outline" size={32} />
 				</Button>
-			),*/
+			),
 		}
 	};
 	addUser = (text) => {

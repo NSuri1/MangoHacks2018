@@ -69,8 +69,8 @@ class ActivityScreen extends React.Component{
 					{
 						this.state.activities.activities.map((item, i) => {
 							return(
-								<CardItem key={i} button onPress={()=>this.addCardItems(item)>
-									<Ionicons name="ios-add-circle-outline" size={20} style={styles.iconSpace}/>
+								<CardItem key={i} button onPress={()=>this.addCardItems(item)}>
+									<Ionicons name="ios-add-circle-outline" size={20} style={styles.iconSpace} />
 									<Text>{item}</Text>
 								</CardItem>
 							)

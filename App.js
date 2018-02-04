@@ -1,4 +1,6 @@
 import React from 'react';
+import ActivityScreen from './ActivityScreen/ActivityScreen';
+import Headers from './Components/Headers'
 import LoginScreen from './LoginScreen/LoginScreen'
 import cardview from './NearbyLocationScreen/cardview'
 
@@ -7,6 +9,8 @@ import { Container, Header, Title, Left, Icon, Right, Button, Body, Content,Text
 import { StackNavigator} from 'react-navigation';
 
 const App = StackNavigator({
+  Login: { screen: LoginScreen },
+  Activity: {screen: ActivityScreen},
   card: { screen: cardview },
 });
 

@@ -4,6 +4,7 @@ import { Container, Content, Card, CardItem, Text, View } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
+import styles from '../styles';
 
 class ActivityScreen extends React.Component{
 	constructor(props){
@@ -14,9 +15,14 @@ class ActivityScreen extends React.Component{
 			}
 		}
 	}
-	static navigationOptions = {
-		header: <Headers />
-	}
+	static navigationOptions = ({ navigation }) => {
+		const params =	navigation || {};
+		return{
+			headerTitle: <Headers text="Activities"/>,
+			headerStyle: styles.mangoOrange,
+  			headerTitleStyle: styles.blackText,
+		}
+	};
 
 	fetchActivities()
 	{
@@ -43,13 +49,13 @@ class ActivityScreen extends React.Component{
 		return(
 			<Container>
 				<Content>
-					<Text style={styles.bigblue}> Hey {this.props.navigation.state.params.user}, whats something that you wanna do </Text>
+					<Text style={styles.blackText, styles.spaceAround}> Hey {this.props.navigation.state.params.user}, what do you want to do? </Text>
 					<Card>
 					{
 						this.state.activities.activities.map((item, i) => {
 							return(
 								<CardItem button onPress={()=>console.log('hi')} key={i++}>
-									<Ionicons name="ios-add-circle-outline" size={32} />
+									<Ionicons name="ios-add-circle-outline" size={32} style={styles.iconSpace}/>
 									<Text>{item}</Text>
 								</CardItem>
 							)
@@ -63,15 +69,3 @@ class ActivityScreen extends React.Component{
 	}
 }
 export default ActivityScreen;
-
-const styles = StyleSheet.create({
-  bigblue: {
-    color: '#7AC4C2',
-    fontWeight: 'bold',
-    fontSize: 30,
-    textAlign: 'center',
-  },
-  red: {
-    color: 'red',
-  },
-});

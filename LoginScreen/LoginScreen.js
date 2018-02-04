@@ -16,6 +16,7 @@ class LoginScreen extends React.Component{
 	static navigationOptions = ({ navigation }) => {
 		const params =	navigation || {};
 		return{
+
 			headerTitle: <Headers text="Mango2Mango"/>,
 			headerStyle: styles.mangoOrange,
   			headerTitleStyle: styles.blackText,

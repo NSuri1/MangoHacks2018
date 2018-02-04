@@ -12,9 +12,14 @@ class ActivityScreen extends React.Component{
 		this.state = {
 			activities: {
 				activities: []
-			}
+			},
+			activityType:"Hack",
+			longitude:0,
+			latitude: 0, 
+
 		}
 	}
+
 	static navigationOptions = ({ navigation }) => {
 		const params =	navigation || {};
 		return{
@@ -37,13 +42,23 @@ class ActivityScreen extends React.Component{
 		      console.error(error);
 		    });
 	}
-	componentDidMount()
-	{
+	componentDidMount(){
 		this.fetchActivities();
 	}
-	loadCardItems()
-	{
-		
+	addCardItems = (item) => {
+		navigator.geolocation.getCurrentPosition((position)=>{
+			
+			this.setState({
+				activityType:item,
+				latitude:position.coords.latitude,
+				longitude:position.coords.longitude,
+			}, 
+			()=>{
+				this.props.navigation.navigate('card', {activityType:this.state.activityType, latitude: this.state.latitude, longitude: this.state.longitude, user:this.props.navigation.state.params.user});
+			}
+			)
+		})
+		//console.log(this.state.activityType);
 	}
 	render(){
 		return(
@@ -54,8 +69,8 @@ class ActivityScreen extends React.Component{
 					{
 						this.state.activities.activities.map((item, i) => {
 							return(
-								<CardItem button onPress={()=>console.log('hi')} key={i++}>
-									<Ionicons name="ios-add-circle-outline" size={32} style={styles.iconSpace}/>
+								<CardItem key={i} button onPress={()=>this.addCardItems(item)>
+									<Ionicons name="ios-add-circle-outline" size={20} style={styles.iconSpace}/>
 									<Text>{item}</Text>
 								</CardItem>
 							)

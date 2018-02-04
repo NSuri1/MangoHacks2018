@@ -65,7 +65,7 @@ class ActivityScreen extends React.Component{
 			<Container>
 				<Content>
 					<Text style={styles.blackText, styles.spaceAround}> Hey {this.props.navigation.state.params.user}, what do you want to do? </Text>
-					<Card>
+					<Card style={styles.bottomBorder}>
 					{
 						this.state.activities.activities.map((item, i) => {
 							return(

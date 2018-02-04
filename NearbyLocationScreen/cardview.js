@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Body, View } from 'native-base';
 import Headers from '../Components/Headers'
+import styles from '../styles';
 
 export default class CardHeaderFooterExample extends Component {
 
@@ -14,9 +15,14 @@ export default class CardHeaderFooterExample extends Component {
     }
   }
 
-  static navigationOptions = {
-    headerTitle: <Headers />
-  }
+  static navigationOptions = ({ navigation }) => {
+    const params =  navigation || {};
+    return{
+      headerTitle: <Headers text="People Around You"/>,
+      headerStyle: styles.mangoOrange,
+      headerTitleStyle: styles.blackText,
+    }
+  };
 
   fetchPeopleList(){
     return fetch(`https://mangoserver2018.herokuapp.com/activities/people?activityType=${this.props.navigation.state.params.activityType}`)

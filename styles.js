@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
   },
   iconSpace: {
     marginRight: width(2)
+  },
+  borderBottom: {
+    borderBottomWidth: 1
   }
 });
 

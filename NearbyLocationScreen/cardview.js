@@ -46,25 +46,23 @@ export default class CardHeaderFooterExample extends Component {
   render() {
     return (
       <Container>
-      <View>
-            <Text> My Profile </Text>
+        <Card style={[styles.profileDivider, styles.maxProfileHeight, styles.innerCardPadding]}>
+          <View >
+            <Text style={[styles.blackText, styles.title1]}> My Profile: </Text>
           </View>
-          <Card>
-            <CardItem header>
-              <Text>{this.props.navigation.state.params.user}</Text>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>Activity you searched for... {this.props.navigation.state.params.activityType}</Text>
-                
-                <Text>Your longitude: {this.props.navigation.state.params.latitude}</Text>
-                
-                <Text>Your latitude: {this.props.navigation.state.params.longitude}</Text>
-              </Body>
-            </CardItem>
-            <CardItem footer>
-            </CardItem>
-         </Card>
+          <CardItem header>
+            <Text>{this.props.navigation.state.params.user}</Text>
+          </CardItem>
+          <CardItem style={styles.maxProfileHeight}>
+              <Text>Activity you searched for... {this.props.navigation.state.params.activityType}</Text>
+          </CardItem>
+          <CardItem>
+            <Text>Your longitude: {this.props.navigation.state.params.latitude}</Text>
+          </CardItem>
+          <CardItem>
+            <Text>Your latitude: {this.props.navigation.state.params.longitude}</Text>
+          </CardItem>
+        </Card>
         <Content>
         {
           console.log(this.state.people.peopleList)
@@ -85,7 +83,7 @@ export default class CardHeaderFooterExample extends Component {
           }) */  
           
           }
-          <Card>
+          <Card style={styles.bottomBorder}>
             <CardItem header>
               <Text>Header </Text>
             </CardItem>
@@ -93,8 +91,6 @@ export default class CardHeaderFooterExample extends Component {
               <Body>
                 <Text>Hey</Text>
               </Body>
-            </CardItem>
-            <CardItem footer>
             </CardItem>
           </Card>
         </Content>

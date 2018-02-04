@@ -29,7 +29,7 @@ class LoginScreen extends React.Component{
 	}
 	render(){
 		return(
-			<Container style={styles.container, styles.mangoGrey}>
+			<Container style={[styles.container, styles.mangoGrey]}>
 				<Content>
 					<Form style={styles.wholeForm}>
 						<Item floatingLabel >

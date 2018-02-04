@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     padding: width(5)
   },
   wholeForm: {
-    marginTop: height(25),
+    marginTop: height(20),
     marginBottom: height(5)
   },
   mangoOrange: {
@@ -25,8 +25,28 @@ const styles = StyleSheet.create({
   iconSpace: {
     marginRight: width(2)
   },
-  borderBottom: {
-    borderBottomWidth: 1
+  heightMin: {
+    minHeight: height(10)
+  },
+  bottomBorder: {
+    borderColor: '#ff5722',
+    borderStyle: 'solid',
+    borderTopWidth: 0.5,
+  },
+  activitiesList: {
+    marginTop: height(5)
+  },
+  title1: {
+    fontSize: width(6)
+  },
+  maxProfileHeight: {
+    maxHeight: height(40)
+  },
+  profileDivider: {
+    marginBottom: height(2)
+  },
+  innerCardPadding: {
+    padding: width(2)
   }
 });
 

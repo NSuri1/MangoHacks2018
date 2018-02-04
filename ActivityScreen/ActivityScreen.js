@@ -64,12 +64,12 @@ class ActivityScreen extends React.Component{
 		return(
 			<Container>
 				<Content>
-					<Text style={styles.blackText, styles.spaceAround}> Hey {this.props.navigation.state.params.user}, what do you want to do? </Text>
-					<Card style={styles.bottomBorder}>
+					<Text style={[styles.blackText, styles.spaceAround, styles.title1]}> Hey {this.props.navigation.state.params.user}, what do you want to do? </Text>
+					<Card style={styles.activitiesList}>
 					{
 						this.state.activities.activities.map((item, i) => {
 							return(
-								<CardItem key={i} button onPress={()=>this.addCardItems(item)}>
+								<CardItem key={i} button onPress={()=>this.addCardItems(item)} style={[styles.bottomBorder, styles.heightMin]}>
 									<Ionicons name="ios-add-circle-outline" size={20} style={styles.iconSpace} />
 									<Text>{item}</Text>
 								</CardItem>

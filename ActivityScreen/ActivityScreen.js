@@ -1,6 +1,7 @@
 import React from 'react';
 import Headers from '../Components/Headers'
-import { Container, Content, Card, CardItem, Text, Icon, View } from 'native-base';
+import { Container, Content, Card, CardItem, Text, View } from 'native-base';
+import { Ionicons } from '@expo/vector-icons';
 
 class ActivityScreen extends React.Component{
 	constructor(props){
@@ -45,8 +46,8 @@ class ActivityScreen extends React.Component{
 					{
 						this.state.activities.activities.map((item, i) => {
 							return(
-								<CardItem key={i++}>
-									{console.log(i)}
+								<CardItem button onPress={()=>console.log('hi')} key={i++}>
+									<Ionicons name="chevron-small-right" size={32} />
 									<Text>{item}</Text>
 								</CardItem>
 							)

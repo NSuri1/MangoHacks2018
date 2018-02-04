@@ -29,15 +29,13 @@ export default class CardHeaderFooterExample extends Component {
     .then((response)=>response.json())
     .then((responseJson)=>{
       this.setState({
-          peopleList: responseJson.peopleList
-      });
+          people: responseJson
+      })
     })
     .catch((error)=>{
       console.error(error);
     })
 
-  }
-  componentWillMount(){
   }
   componentDidMount(){
     this.fetchPeopleList();
@@ -67,24 +65,23 @@ export default class CardHeaderFooterExample extends Component {
          </Card>
         <Content>
         {
-          console.log(this.state.people.peopleList)
-            /*this.state.people.peopleList.map((person, i)=>{
+          this.state.people.peopleList.map((person, i)=>{
                 return(
                 <Card key={i}>
                   <CardItem header>
-                    <Text> </Text>
+                    <Text>{person.name}</Text>
                   </CardItem>
                   <CardItem>
                     <Body>
-                      <Text>{console.log(person)}</Text>
+                      <Text>Activity: {person.activity}</Text>
+                      <Text>Latitude: {person.latitude}</Text>
+                      <Text>Longitude: {person.longitude}</Text>
                     </Body>
                   </CardItem>
                 </Card>
-              
-
-          }) */  
-          
-          }
+          ) 
+          })
+        }
           <Card>
             <CardItem header>
               <Text>Header </Text>

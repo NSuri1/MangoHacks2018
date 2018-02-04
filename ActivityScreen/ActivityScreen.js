@@ -10,13 +10,12 @@ class ActivityScreen extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			activities: {
+			ParentActivity: {
 				activities: []
 			},
 			activityType:"Hack",
 			longitude:0,
 			latitude: 0, 
-
 		}
 	}
 
@@ -28,14 +27,13 @@ class ActivityScreen extends React.Component{
   			headerTitleStyle: styles.blackText,
 		}
 	};
-
 	fetchActivities()
 	{
 		return fetch('https://mangoserver2018.herokuapp.com/activities')
 		.then((response) => response.json())
 		    .then((responseJson) => {
 		      this.setState({
-		      	activities: responseJson,
+		      	ParentActivity: responseJson,
 		      }); 
 		    })
 		    .catch((error) => {
@@ -67,7 +65,8 @@ class ActivityScreen extends React.Component{
 					<Text style={styles.blackText, styles.spaceAround}> Hey {this.props.navigation.state.params.user}, what do you want to do? </Text>
 					<Card style={styles.bottomBorder}>
 					{
-						this.state.activities.activities.map((item, i) => {
+
+						this.state.ParentActivity.activities.map((item, i) => {
 							return(
 								<CardItem key={i} button onPress={()=>this.addCardItems(item)}>
 									<Ionicons name="ios-add-circle-outline" size={20} style={styles.iconSpace} />

@@ -3,6 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import Headers from '../Components/Headers'
 import { Container, Header, Title, Left, Right, Button, Body, Content,Text, Card, CardItem, Label, Form, Item, Input } from "native-base";
 import { Ionicons } from '@expo/vector-icons';
+import styles from '../styles';
+
 
 class LoginScreen extends React.Component{
 	constructor(props){
@@ -14,7 +16,10 @@ class LoginScreen extends React.Component{
 	static navigationOptions = ({ navigation }) => {
 		const params =	navigation || {};
 		return{
-			headerTitle: <Headers />, 
+
+			headerTitle: <Headers text="Mango2Mango"/>,
+			headerStyle: styles.mangoOrange,
+  			headerTitleStyle: styles.blackText,
 		}
 	};
 	addUser = (text) => {
@@ -24,11 +29,11 @@ class LoginScreen extends React.Component{
 	}
 	render(){
 		return(
-			<Container>
+			<Container style={styles.container, styles.mangoGrey}>
 				<Content>
-					<Form>
-						<Item floatingLabel>
-							<Label> Username </Label>
+					<Form style={styles.wholeForm}>
+						<Item floatingLabel >
+							<Label > Username </Label>
 							<Input value={this.state.user} onChangeText={this.addUser}/>
 						</Item>
 						<Item floatingLabel>
@@ -36,8 +41,8 @@ class LoginScreen extends React.Component{
 							<Input />
 						</Item>
 					</Form>
-					<Button full Danger onPress={() => this.props.navigation.navigate('Activity', { user: this.state.user })}>
-						<Text> Submit </Text>
+					<Button full Danger onPress={() => this.props.navigation.navigate('Activity', { user: this.state.user })} style={styles.mangoOrange}>
+						<Text style={styles.blackText}> Submit </Text>
 					</Button>
 				</Content>
 			</Container>
@@ -45,3 +50,4 @@ class LoginScreen extends React.Component{
 	}
 }
 export default LoginScreen;
+
